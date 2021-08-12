@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns:tns="http://www.tibco.com/schemas/pass_decryptor/resources/resources/pass-decryptor-service.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/pass_decryptor/resources/resources/pass-decryptor-service.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="decryptRequest" type="tns:DecryptRequest"/>
+	<xs:element name="decryptResponse" type="tns:DecryptResponse"/>
+	<xs:complexType name="DecryptRequest">
+		<xs:sequence>
+			<xs:element name="encrypted_password" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DecryptResponse">
+		<xs:sequence>
+			<xs:element name="decrypted_password" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
