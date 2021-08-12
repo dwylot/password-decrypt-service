@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://xmlns.example.com/1628693803406" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:ns="http://www.tibco.com/schemas/pass_decryptor/resources/resources/pass-decryptor-service.xsd">
+    <wsdl:import namespace="http://xmlns.example.com/1628693803406" location="/ws/pass-decryptor-service/WSDL.wsdl"/>
+    <pd:name>ws/pass-decryptor-service/decrypt.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType wsMsgRef="pfx:DecryptRequest"/>
+    <pd:startX>150</pd:startX>
+    <pd:startY>64</pd:startY>
+    <pd:returnBindings>
+        <pfx:DecryptResponse>
+            <DecryptResponse>
+                <ns:decryptResponse>
+                    <ns:decrypted_password>
+                        <xsl:value-of select="$decrypt/decrypted_password"/>
+                    </ns:decrypted_password>
+                </ns:decryptResponse>
+            </DecryptResponse>
+        </pfx:DecryptResponse>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType wsMsgRef="pfx:DecryptResponse"/>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1628698431106</pd:targetNamespace>
+    <pd:activity name="decrypt">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>297</pd:x>
+        <pd:y>64</pd:y>
+        <config>
+            <processName>/process/decrypt.process</processName>
+        </config>
+        <pd:inputBindings>
+            <xsl:copy-of select="$Start/pfx:DecryptRequest/DecryptRequest/ns:decryptRequest"/>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>decrypt</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>decrypt</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
