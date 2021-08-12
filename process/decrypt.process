@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/pass_decryptor/resources/resources/pass-decryptor-service.xsd" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.tibco.com/schemas/pass_decryptor/resources/resources/pass-decryptor-service.xsd" schemaLocation="/resources/pass-decryptor-service.xsd"/>
+    <pd:name>process/decrypt.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startType ref="pfx:decryptRequest"/>
+    <pd:startX>151</pd:startX>
+    <pd:startY>64</pd:startY>
+    <pd:returnBindings>
+        <decrypted_password>
+            <xsl:value-of select="$Java-Code/javaCodeActivityOutput/out_Password"/>
+        </decrypted_password>
+    </pd:returnBindings>
+    <pd:endName>End</pd:endName>
+    <pd:endType>
+        <xsd:element name="decrypted_password" type="xsd:string"/>
+    </pd:endType>
+    <pd:endX>450</pd:endX>
+    <pd:endY>64</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1628687029677</pd:targetNamespace>
+    <pd:activity name="Java Code">
+        <pd:type>com.tibco.plugin.java.JavaActivity</pd:type>
+        <pd:resourceType>ae.javapalette.javaActivity</pd:resourceType>
+        <pd:x>294</pd:x>
+        <pd:y>64</pd:y>
+        <config>
+            <fileName>decryptJavaCode</fileName>
+            <packageName>process.decrypt</packageName>
+            <fullsource>package process.decrypt;
+import java.util.*;
+import java.io.*;
+import com.tibco.security.ObfuscationEngine;
+public class decryptJavaCode{
+/****** START SET/GET METHOD, DO NOT MODIFY *****/
+	protected String in_Password = "";
+	protected String out_Password = "";
+	public String getin_Password() {
+		return in_Password;
+	}
+	public void setin_Password(String val) {
+		in_Password = val;
+	}
+	public String getout_Password() {
+		return out_Password;
+	}
+	public void setout_Password(String val) {
+		out_Password = val;
+	}
+/****** END SET/GET METHOD, DO NOT MODIFY *****/
+	public decryptJavaCode() {
+	}
+	public void invoke() throws Exception {
+/* Available Variables: DO NOT MODIFY
+	In  : String in_Password
+	Out : String out_Password
+* Available Variables: DO NOT MODIFY *****/
+
+
+ out_Password = new String(ObfuscationEngine.decrypt(in_Password));}
+}
+</fullsource>
+            <inputData>
+                <row>
+                    <fieldName>in_Password</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </inputData>
+            <outputData>
+                <row>
+                    <fieldName>out_Password</fieldName>
+                    <fieldType>string</fieldType>
+                    <fieldRequired>optional</fieldRequired>
+                </row>
+            </outputData>
+            <byteCode>
+                <class>
+                    <name>decryptJavaCode</name>
+                    <byteCode>yv66vgAAADQAKwkACAAcCQAIAB0KAAkAHggAHwcAIAoAIQAiCgAFACMHACQHACUBAAtpbl9QYXNzd29yZAEAEkxqYXZhL2xhbmcvU3RyaW5nOwEADG91dF9QYXNzd29yZAEADmdldGluX1Bhc3N3b3JkAQAUKClMamF2YS9sYW5nL1N0cmluZzsBAARDb2RlAQAPTGluZU51bWJlclRhYmxlAQAOc2V0aW5fUGFzc3dvcmQBABUoTGphdmEvbGFuZy9TdHJpbmc7KVYBAA9nZXRvdXRfUGFzc3dvcmQBAA9zZXRvdXRfUGFzc3dvcmQBAAY8aW5pdD4BAAMoKVYBAAZpbnZva2UBAApFeGNlcHRpb25zBwAmAQAKU291cmNlRmlsZQEAFGRlY3J5cHRKYXZhQ29kZS5qYXZhDAAKAAsMAAwACwwAFQAWAQAAAQAQamF2YS9sYW5nL1N0cmluZwcAJwwAKAApDAAVACoBAB9wcm9jZXNzL2RlY3J5cHQvZGVjcnlwdEphdmFDb2RlAQAQamF2YS9sYW5nL09iamVjdAEAE2phdmEvbGFuZy9FeGNlcHRpb24BACRjb20vdGliY28vc2VjdXJpdHkvT2JmdXNjYXRpb25FbmdpbmUBAAdkZWNyeXB0AQAWKExqYXZhL2xhbmcvU3RyaW5nOylbQwEABShbQylWACEACAAJAAAAAgAEAAoACwAAAAQADAALAAAABgABAA0ADgABAA8AAAAdAAEAAQAAAAUqtAABsAAAAAEAEAAAAAYAAQAAAAoAAQARABIAAQAPAAAAIgACAAIAAAAGKiu1AAGxAAAAAQAQAAAACgACAAAADQAFAA4AAQATAA4AAQAPAAAAHQABAAEAAAAFKrQAArAAAAABABAAAAAGAAEAAAAQAAEAFAASAAEADwAAACIAAgACAAAABiortQACsQAAAAEAEAAAAAoAAgAAABMABQAUAAEAFQAWAAEADwAAADUAAgABAAAAESq3AAMqEgS1AAEqEgS1AAKxAAAAAQAQAAAAEgAEAAAAFgAEAAcACgAIABAAFwABABcAFgACAA8AAAArAAQAAQAAABMquwAFWSq0AAG4AAa3AAe1AAKxAAAAAQAQAAAABgABAAAAHwAYAAAABAABABkAAQAaAAAAAgAb</byteCode>
+                </class>
+            </byteCode>
+        </config>
+        <pd:inputBindings>
+            <javaCodeActivityInput>
+                <in_Password>
+                    <xsl:value-of select="$Start/pfx:decryptRequest/pfx:encrypted_password"/>
+                </in_Password>
+            </javaCodeActivityInput>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>Java Code</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Java Code</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
