@@ -4,7 +4,7 @@
         <sharedArchive name="Shared Archive">
             <resourceType>shared.archive.resource</resourceType>
             <authorProperty>DamianWylot</authorProperty>
-            <sharedResources>/deploy/pass-decryptor-service.aliaslib</sharedResources>
+            <sharedResources>/deploy/pass-decrypt-service.aliaslib</sharedResources>
             <sharedFiles/>
             <sharedJarFiles/>
         </sharedArchive>
@@ -13,15 +13,15 @@
             <authorProperty>DamianWylot</authorProperty>
             <processProperty>/ws/pass-decryptor-service/pass-decryptor-service.serviceagent,/ws/pass-decryptor-service/returnWsdl.process,/ws/pass-decryptor-service/decrypt.process,/process/decrypt.process</processProperty>
         </processArchive>
-        <versionProperty>1</versionProperty>
+        <versionProperty>3</versionProperty>
         <authorProperty>DamianWylot</authorProperty>
         <addServiceSettableGvars>true</addServiceSettableGvars>
-        <name>pass-decryptor-service</name>
+        <name>pass-decrypt-service</name>
         <designer>
             <lockedProperties/>
             <fixedChildren/>
             <resourceDescriptions/>
         </designer>
-        <fileLocationProperty>C:\git\tibco\EARs\pass-decryptor-service.ear</fileLocationProperty>
+        <fileLocationProperty>C:\git\tibco\EARs\pass-decrypt-service.ear</fileLocationProperty>
     </enterpriseArchive>
 </Repository:repository>
