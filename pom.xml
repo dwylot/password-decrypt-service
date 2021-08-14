@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.damianwylot.tibco.password-decryptor-service</groupId>
+	<artifactId>password-decryptor-service</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>bw-ear</packaging>
+	<parent>
+		<groupId>pl.damianwylot.tibco.</groupId>
+		<artifactId>tibco-pom</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<properties>
+		<buildear.validate>false</buildear.validate>
+	</properties>
+	<scm>
+		<connection>scm:git:https://github.com/dwylot/password-decrypt-service.git</connection>
+		<developerConnection>scm:git:https://github.com/dwylot/password-decrypt-service.git</developerConnection>
+		<url>scm:git:https://github.com/dwylot/password-decrypt-service.git</url>
+		<tag>HEAD</tag>
+	</scm>
+	
+	<!--dependencies>
+		<dependency>
+			<groupId>pl.damianwylot.tibco.service</groupId>
+			<artifactId>service</artifactId>
+			<type>projlib</type>
+		</dependency>
+	</dependencies-->
+</project>
